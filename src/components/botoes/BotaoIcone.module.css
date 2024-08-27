@@ -1,0 +1,8 @@
+.linkIcone{
+    margin-left: 4px;
+    text-decoration: none;
+}
+
+.linkIcone:hover{
+    cursor: pointer;
+}

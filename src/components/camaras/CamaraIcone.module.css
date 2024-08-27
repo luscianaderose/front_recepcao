@@ -1,0 +1,24 @@
+.iconeFechada {
+    background-color: #ff0000;
+}
+
+.iconeAtendendo {
+    background-color: green;
+}
+  
+.iconeAvisar {
+    background-color: yellow;
+}
+
+.iconeAvisado {
+    background-color: blue;
+}
+
+.iconeAtendendo, .iconeFechada, .iconeAvisar, .iconeAvisado{
+    margin-right: 5px;
+    margin-top: 2px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}

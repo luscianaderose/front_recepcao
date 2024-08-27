@@ -1,0 +1,13 @@
+.legenda{
+    /* width: calc(810px - 5px); */
+    width: calc(100%);
+    text-align: center;
+    /* justify-content: space-between; */
+    padding: 0 10 0 10;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: inline-block; /* Display each word as a block */
+    white-space: nowrap; /* Prevent words from wrapping */
+    /* margin-right: 10px; Adjust the spacing between words */
+}
+  

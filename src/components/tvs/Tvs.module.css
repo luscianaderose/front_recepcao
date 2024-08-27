@@ -1,0 +1,22 @@
+.tvVidenciaPrece{
+    width: 1240px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.tvVidencia{
+    width: 610px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tvPrece{
+    width: 610px;
+    border-radius: 10px;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+}

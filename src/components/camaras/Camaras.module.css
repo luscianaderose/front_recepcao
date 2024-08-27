@@ -1,0 +1,36 @@
+.divVidenciaPrece{
+    width: 830px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    /* border-style: solid;
+    border-width: 2px;
+    border-color: red; */
+}
+
+.dvpTit{
+    height: 30px;
+    text-align: center;
+    padding: 6px 4px 4px 4px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.divEspaco{
+    width: 200px;
+    /* background-color: blueviolet; */
+}
+
+.dvpCamaraTotal{
+    min-width: 390px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    /* border-style: solid;
+    border-width: 2px;
+    border-color: red; */
+}
+  

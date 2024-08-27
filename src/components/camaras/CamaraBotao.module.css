@@ -1,0 +1,9 @@
+.btCamara{
+    font-weight: bold;
+    font-size: small;
+    /* border: 6px solid red; */
+}
+
+.btCamara button{
+    margin-top: 0 !important;
+}

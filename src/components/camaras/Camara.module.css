@@ -1,0 +1,28 @@
+.dvpCamaraIndividual{
+    width: 170px;
+    height: 260px;
+    padding: 10px;
+    border-radius: 8px;
+    white-space: normal;
+    text-align: center;
+    /* border-style: solid;
+    border-width: 2px;
+    border-color: blue; */
+}
+ 
+.dvpBtNumGdeComBtChamNov{
+    /* background-color: green; */
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.dvpBtChamarNovamente{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.linkBolinhas{
+    text-decoration: none;
+}

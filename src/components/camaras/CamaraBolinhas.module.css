@@ -1,0 +1,12 @@
+.linkBolinhas{
+    /* margin: 0 5px; */
+}
+
+.linkBolinhas:hover{
+    cursor: pointer;
+}
+
+.linkBolinhas button{
+    margin-top: 0;
+    background-color: rgba(0,0,0,0);
+}

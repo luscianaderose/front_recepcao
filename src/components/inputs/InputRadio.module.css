@@ -1,0 +1,29 @@
+input[type="radio"] {
+    display: none;
+}
+
+.radio:checked + label {
+    background-color:black;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+.label1,.label2 {
+    display: block;
+    width: 120px;
+    color: #2c2c2c;
+}
+
+.radioTxt {
+    display: flex;
+    height: 20px;
+    width: 80px; 
+    justify-content: center;
+    align-items: center;
+}
+
+.label2 {
+    right: 0;
+    border-left: solid 2px;
+    border-color: white;
+}

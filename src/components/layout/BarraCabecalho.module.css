@@ -1,0 +1,35 @@
+.divCabecalho{
+    width: 810px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    /* background-color: red; */
+}  
+
+.dcTit{
+    position: relative;
+    top: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /*Vertically center */
+    /* background-color: yellow; */
+}  
+
+.dcData{
+    position: relative;
+    top: 5px;
+    display: flex;
+    justify-content: flex-end; /* Horizontally align to the right */
+    align-items: center; /* Vertically center */
+    /* background-color: green; */
+}
+
+.dcLogo{/* dc  = div cabeçalho*/
+    position: relative;
+    top: 5px;
+    /* background-color: blue; */
+}
+  
+  

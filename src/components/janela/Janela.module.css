@@ -1,0 +1,15 @@
+.btsJanela{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.botao{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.botao button{
+    margin-top: 0;
+}
+  
