@@ -11,45 +11,9 @@ function CalendarioMes(props){
     const diasDaSemana = ["S", "T", "Q", "Q", "S", "S", "D"]
 
 
-
-
-
-
-    
-
-//     return(
-//         <div className={styles.card}>
-//             <div className={styles.cardTitle}>{props.mes["mes_display"]}</div>
-//             <div className={styles.cardBody}>
-//                 {/* {props.mes["dias"].map((dia, index) => (
-//                     <div key={index} className={styles.dia}>
-//                         <p>Dia do Mês: {dia.dia_mes}</p>
-//                         <p>Dia da Semana: {dia.dia_semana_display}</p>
-//                         {dia.feriado && <p>Feriado: {dia.feriado}</p>}
-//                     </div> */}
-
-//                 {props.mes["dias"].map((dia, index) => (
-//                     <div key={index} className={styles.dia}>
-//                         <p>{dia.dia_mes}</p>
-//                         <p>{dia.dia_semana_display}</p>
-//                         {dia.feriado && <p>Feriado: {dia.feriado}</p>}
-//                     </div>
-//                 ))}
-//             </div>
-//         </div>
-//     )
-// }
-
-
-
     return (
         <div className={styles.card}>
-            <div className={styles.cardTitle}>
-                {mes_display}
-                {/* <div className={styles.dia}><p>S T Q Q S S D</p></div> */}
-                {/* <p className={styles.dia}>S T Q Q S S D</p> */}
-                {/* <p className={styles.dia}>{diasDaSemana.map()}</p> */}
-            </div>
+            <div className={styles.cardTitle}>{mes_display}</div>
 
             {/* Exibir as siglas dos dias da semana */}
             <div className={styles.diasSemana}>
@@ -63,9 +27,7 @@ function CalendarioMes(props){
             <div className={styles.cardBody}>
                 {dias.map((dia, index) => (
                     <div key={index} className={styles.dia}>
-                        <p>{dia.dia_mes} 
-                            {/* {dia.dia_semana_display} */}
-                            </p>
+                        <p>{dia.dia_mes}</p>
                     </div>
                 ))}
             </div>
@@ -73,7 +35,6 @@ function CalendarioMes(props){
             {/* Exibir Feriados Abaixo dos Dias */}
             {feriadosDoMes.length > 0 && (
                 <div className={styles.feriados}>
-                    {/* <h4>Feriados</h4> */}
                     {feriadosDoMes.map((feriado, index) => (
                         <div key={index} className={styles.feriado}>
                             <p>
@@ -87,7 +48,4 @@ function CalendarioMes(props){
     );
     }
 
-
-
-
-export default CalendarioMes
+    export default CalendarioMes
