@@ -8,6 +8,7 @@ import CalendarioAno from '../components/calendario/CalendarioAno'
 
 function RecepcaoPage(){
     const anoAtual = new Date().getFullYear();
+    const mesAtual = new Date().getMonth();
 
     return(
     <>
@@ -16,7 +17,7 @@ function RecepcaoPage(){
         <Camaras/>
         <BarraLegenda/>
         <Menu/>
-        <CalendarioAno ano={anoAtual}/>
+        <CalendarioAno ano={anoAtual} mes={mesAtual}/>
     </>
     )
 }

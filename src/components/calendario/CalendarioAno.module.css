@@ -8,3 +8,7 @@
 .cardTitle{
     padding-bottom: 15px;
 }
+
+.todosFeriados{
+    border: 1px solid green;
+}

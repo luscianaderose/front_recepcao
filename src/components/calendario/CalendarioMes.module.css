@@ -8,3 +8,12 @@
     padding-bottom: 10px;
     text-align: center;
 }
+
+.dia{
+    border: 1px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+
+}

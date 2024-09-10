@@ -25,21 +25,38 @@ function CalendarioAno(props){
 
     console.log("calendario", calendario)
 
+    const feriados = calendario
+        ? Object.values(calendario).flatMap(mes => 
+            mes.dias.filter(dia => dia.feriado)
+          )
+        : [];
+
 
     return(
         <div className={`${styles.card} divContainer cor-fundo2`}>
             <div className={`${styles.cardTitle} txt-tit2`}>CALENDÁRIO {props.ano}</div>
             <div className={styles.cardBody}>
                 {/* <CalendarioMes mes={1}/>
-                <CalendarioMes mes={2}/> */}
+                <CalendarioMes mes={2}/> NAO APAGAR ESSA NOTA*/}
                 {
                     calendario &&
-                    Object.values(calendario).map((mes) => (
-                        <CalendarioMes mes={mes}/>
+                    Object.values(calendario).map((mes, index) => (
+                        <CalendarioMes key={index} mes={mes}/>
                     ))
                 }
             </div>
 
+            <div className={styles.todosFeriados}>
+                <h3>Feriados</h3>
+                {feriados.map((dia, index) => (
+                    <div key={index} className={styles.dia}>
+                        <p>Dia: {dia.dia_mes}</p>
+                        <p>Dia da Semana: {dia.dia_semana_display}</p>
+                        <p>Feriado: {dia.feriado}</p>
+                    </div>
+                ))}
+
+            </div>
         </div>
     )
 }
