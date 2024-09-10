@@ -46,7 +46,7 @@ function CalendarioAno(props){
                 }
             </div>
 
-            <div className={styles.todosFeriados}>
+            {/* <div className={styles.todosFeriados}>
                 <h3>Feriados</h3>
                 {feriados.map((dia, index) => (
                     <div key={index} className={styles.dia}>
@@ -56,7 +56,8 @@ function CalendarioAno(props){
                     </div>
                 ))}
 
-            </div>
+            </div> */}
+            
         </div>
     )
 }

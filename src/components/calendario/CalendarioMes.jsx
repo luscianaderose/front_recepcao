@@ -37,8 +37,9 @@ function CalendarioMes(props){
             <div className={styles.cardBody}>
                 {dias.map((dia, index) => (
                     <div key={index} className={styles.dia}>
-                        <p>Dia do Mês: {dia.dia_mes}</p>
-                        <p>Dia da Semana: {dia.dia_semana_display}</p>
+                        <p>{dia.dia_mes} 
+                            {/* {dia.dia_semana_display} */}
+                            </p>
                     </div>
                 ))}
             </div>
@@ -46,11 +47,10 @@ function CalendarioMes(props){
             {/* Exibir Feriados Abaixo dos Dias */}
             {feriadosDoMes.length > 0 && (
                 <div className={styles.feriados}>
-                    <h4>Feriados</h4>
+                    {/* <h4>Feriados</h4> */}
                     {feriadosDoMes.map((feriado, index) => (
                         <div key={index} className={styles.feriado}>
-                            <p>Dia: {feriado.dia_mes}</p>
-                            <p>Feriado: {feriado.feriado}</p>
+                            <p>{feriado.dia_mes} {feriado.feriado}</p>
                         </div>
                     ))}
                 </div>
