@@ -20,7 +20,7 @@ function BarraCabecalho(){
     )
 
     return(
-        <div className={styles.divCabecalho}>
+        <div className={`${styles.divCabecalho} divContainer`}>
             <div className={styles.dcLogo}>
                 <img alt="CONGREGAÇÃO ESPÍRITA FRANCISCO DE PAULA" src={cefpPng} height="50"/>
             </div>

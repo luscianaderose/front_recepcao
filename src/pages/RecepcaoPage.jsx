@@ -3,9 +3,12 @@ import BarraAdicionarNomes from '../components/layout/BarraAdicionarNomes'
 import Camaras from '../components/camaras/Camaras'
 import BarraLegenda from '../components/layout/BarraLegenda'
 import Menu from '../components/layout/Menu'
+import CalendarioAno from '../components/calendario/CalendarioAno'
 
 
 function RecepcaoPage(){
+    const anoAtual = new Date().getFullYear();
+
     return(
     <>
         <BarraCabecalho/>
@@ -13,6 +16,7 @@ function RecepcaoPage(){
         <Camaras/>
         <BarraLegenda/>
         <Menu/>
+        <CalendarioAno ano={anoAtual}/>
     </>
     )
 }

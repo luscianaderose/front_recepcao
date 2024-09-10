@@ -29,7 +29,7 @@ function Menu(){
     )
 
     return(
-        <div className={`${styles.divMenuTodo} cor-fundo2`}>
+        <div className={`divContainer cor-fundo2`}>
             <p className="txt-tit2">MENU</p>
 
             <SubMenuGeral/>

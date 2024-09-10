@@ -1,0 +1,10 @@
+.cardBody{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.cardTitle{
+    padding-bottom: 15px;
+}

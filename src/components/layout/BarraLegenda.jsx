@@ -8,7 +8,7 @@ import observacaoPng from "../../assets/img/observacao.png"
 
 function BarraLegenda(){
     return (
-        <div className={`${styles.legenda} cor-fundo2`}>
+        <div className={`${styles.legenda} divContainer cor-fundo2`}>
             <p className="txt-pequeno">
                 LEGENDA: NOME - CÂMARA &nbsp;&nbsp;
                 BOTÕES: &nbsp;

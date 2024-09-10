@@ -49,7 +49,7 @@ function BarraAdicionarNomes(){
     },[])
 
     return(
-        <div className={`${styles.divAdicionarNomes} cor-fundo2`}>
+        <div className={`${styles.divAdicionarNomes} divContainer cor-fundo2`}>
             <div className="txt-tit3">ADICIONAR NOME NA FILA</div>
 
             <form className={styles.danForm} onSubmit={adicionarNomeNaFila}>

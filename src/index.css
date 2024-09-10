@@ -147,3 +147,12 @@ letter-spacing: 2px;
 padding-right: 4%;
 }
 
+.divContainer{
+  width: 810px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  /* border-style: solid;
+  border-width: 6px;
+  border-color: rgb(255, 0, 208); */
+}
