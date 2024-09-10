@@ -1,19 +1,55 @@
 .card{
-    border: 1px solid red;
+    background-color: white;
     width: 20%;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 .cardTitle{
     font-weight: bold;
     padding-bottom: 10px;
     text-align: center;
+    /* border: 1px solid black; */
+}
+
+.diasSemana {
+    display: grid; /* Usar grid para alinhar corretamente as siglas */
+    grid-template-columns: repeat(7, 1fr); /* 7 colunas para os dias da semana */
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.diaSemana {
+    font-weight: bold;
+}
+
+.cardBody {
+    display: grid; /* Muda para display grid */
+    grid-template-columns: repeat(7, 1fr); /* Define 7 colunas iguais para os dias do mês*/
+    row-gap: 0px; /* Ajuste o valor para controlar o espaçamento entre linhas */
+    gap: 0px; /* Espaçamento entre os dias */
+    justify-items: center; /* Alinha os itens ao centro de cada célula */
 }
 
 .dia{
-    border: 1px solid blue;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1px;
-    justify-content: center;
+    /* border: 1px solid blue; */
+    text-align: center;
+    padding: 0px;
+    margin: 0; /* Remova margens para evitar espaço extra */
+    line-height: 0px; /* Ajuste da altura da linha para reduzir espaçamento interno */
+}
 
+.diaMesFeriado {
+    font-weight: bold;
+    border: 1px solid magenta;
+    color: magenta;
+    background-color: green;
+}
+
+.feriados {
+    margin-top: 10px;
+}
+
+.feriado {
+    margin-bottom: 5px;
 }

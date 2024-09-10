@@ -8,6 +8,8 @@ function CalendarioMes(props){
     // Filtrar apenas os dias que são feriados
     const feriadosDoMes = dias.filter(dia => dia.feriado);
 
+    const diasDaSemana = ["S", "T", "Q", "Q", "S", "S", "D"]
+
 //     return(
 //         <div className={styles.card}>
 //             <div className={styles.cardTitle}>{props.mes["mes_display"]}</div>
@@ -31,9 +33,26 @@ function CalendarioMes(props){
 //     )
 // }
 
+
+
     return (
         <div className={styles.card}>
-            <div className={styles.cardTitle}>{mes_display}</div>
+            <div className={styles.cardTitle}>
+                {mes_display}
+                {/* <div className={styles.dia}><p>S T Q Q S S D</p></div> */}
+                {/* <p className={styles.dia}>S T Q Q S S D</p> */}
+                {/* <p className={styles.dia}>{diasDaSemana.map()}</p> */}
+            </div>
+
+            {/* Exibir as siglas dos dias da semana */}
+            <div className={styles.diasSemana}>
+                {diasDaSemana.map((diaSemana, index) => (
+                    <div key={index} className={styles.diaSemana}>
+                        {diaSemana}
+                    </div>
+                ))}
+            </div>
+
             <div className={styles.cardBody}>
                 {dias.map((dia, index) => (
                     <div key={index} className={styles.dia}>
@@ -50,7 +69,9 @@ function CalendarioMes(props){
                     {/* <h4>Feriados</h4> */}
                     {feriadosDoMes.map((feriado, index) => (
                         <div key={index} className={styles.feriado}>
-                            <p>{feriado.dia_mes} {feriado.feriado}</p>
+                            <p>
+                                <span className={styles.diasMesFeriado}>{feriado.dia_mes}</span> {feriado.feriado}
+                            </p>
                         </div>
                     ))}
                 </div>
