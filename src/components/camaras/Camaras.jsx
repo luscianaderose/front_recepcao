@@ -10,12 +10,13 @@ function Camaras(){
     const [camaras, setCamaras] = useState()
     const [filaVidencia, setFilaVidencia] = useState()
     const [filaPrece, setFilaPrece] = useState()
-    console.log("api url", APIURL)
+    // console.log("api url", APIURL)
 
     const buscarCamaras = async () => {
         try {
             const resposta = await axios.get(`http://127.0.0.1:5001/camaras`)
             const dados = await resposta.data
+            // console.log('camaras: ', dados)
             setCamaras(dados)
         } catch(error){
             console.error("erro", error)

@@ -46,6 +46,8 @@ function Camara(props){
         audio.play()
     }
 
+    console.log('camara[numero_camara]: ', props.camara['numero_camara'])
+
     return(
         <div className={`${styles.dvpCamaraIndividual} cor-fundo2 ${classeCamara[props.camara["estado"].toLowerCase()]}`}>
             <p>
