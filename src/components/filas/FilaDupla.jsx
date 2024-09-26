@@ -35,7 +35,7 @@ function FilaDupla(props) {
     }
 
     const linkDupla = () => {
-        if (props.dupla !== -1) {
+        if (props.dupla !== null) {
             return (
                 <>
                     <BotaoIcone
