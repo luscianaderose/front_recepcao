@@ -3,10 +3,10 @@ import { useState, useEffect } from "react"
 import styles from "./Camaras.module.css"
 import Camara from "./Camara"
 import Fila from "../filas/Fila"
-import {APIURL} from "../../services/api"
+import { APIURL } from "../../services/api"
 
 
-function Camaras(){
+function Camaras() {
     const [camaras, setCamaras] = useState()
     const [filaVidencia, setFilaVidencia] = useState()
     const [filaPrece, setFilaPrece] = useState()
@@ -18,7 +18,7 @@ function Camaras(){
             const dados = await resposta.data
             // console.log('camaras: ', dados)
             setCamaras(dados)
-        } catch(error){
+        } catch (error) {
             console.error("erro", error)
         }
     }
@@ -29,7 +29,7 @@ function Camaras(){
             const respostaFilaPrece = await axios.get("http://127.0.0.1:5001/fila_prece")
             setFilaVidencia(respostaFilaVidencia.data)
             setFilaPrece(respostaFilaPrece.data)
-        } catch(error){
+        } catch (error) {
             console.error("erro", error)
         }
     }
@@ -39,16 +39,17 @@ function Camaras(){
             buscarCamaras()
             buscarFilas()
         }
-    ,[])
+        , [])
 
-    return(
+    return (
         <div className={styles.divVidenciaPrece}>
             <div className={styles.divVidencia}>
                 <div className={`${styles.dvpTit} txt-tit2 cor-videncia`}>CÂMARAS VIDÊNCIA</div>
                 <div className={`${styles.dvpCamaraTotal} cor-videncia`}>
-                    {camaras && camaras.map((camara, indice) => (
-                        camara["nome_fila"] === "videncia" && (
-                            <Camara 
+                    {camaras && filaVidencia && Object.values(camaras).map((camara, indice) => (
+                        // console.log(camara["fila_atividade"] === "videncia", camara.numero)
+                        camara["fila_atividade"] === "videncia" && (
+                            <Camara
                                 camara={camara}
                                 fila={filaVidencia}
                                 mudarCamaras={setCamaras}
@@ -57,15 +58,17 @@ function Camaras(){
                         )
                     ))}
                 </div>
-                {filaVidencia && <Fila atividade="videncia" fila={filaVidencia}/>}
+                {filaVidencia && <Fila atividade="videncia" fila={filaVidencia} />}
             </div>
+
             <div className={styles.divEspaco}> </div>
+
             <div className={styles.divPrece}>
                 <div className={`${styles.dvpTit} txt-tit2 cor-prece`}>CÂMARAS PRECE</div>
                 <div className={`${styles.dvpCamaraTotal} cor-prece`}>
-                    {camaras && camaras.map((camara, indice) => (
-                        camara["nome_fila"] === "prece" && (
-                            <Camara 
+                    {camaras && filaPrece && Object.values(camaras).map((camara, indice) => (
+                        camara["fila_atividade"] === "prece" && (
+                            <Camara
                                 camara={camara}
                                 fila={filaPrece}
                                 mudarCamaras={setCamaras}
@@ -74,7 +77,7 @@ function Camaras(){
                         )
                     ))}
                 </div>
-                {filaPrece && <Fila atividade="prece" fila={filaPrece}/>}
+                {filaPrece && <Fila atividade="prece" fila={filaPrece} />}
             </div>
         </div>
     )

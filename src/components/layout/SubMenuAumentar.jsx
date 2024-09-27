@@ -3,7 +3,7 @@ import styles from "./Menu.module.css"
 import Botao from "../botoes/Botao"
 
 
-function SubMenuAumentar (props) {
+function SubMenuAumentar(props) {
 
     const aumentar = async (numeroCamara) => {
         const resposta = await axios.get(`http://127.0.0.1:5001/aumentar_capacidade/${numeroCamara}`)
@@ -12,15 +12,15 @@ function SubMenuAumentar (props) {
 
     return (
         <div className={`${styles.divMenu} cor-fundo2`}>
-            {props.camaras.map((camara, indice) => (
+            {Object.values(props.camaras).map((camara, indice) => (
                 <Botao
                     className={styles.botao}
-                    onClick={() => aumentar(camara["numero_camara"].toUpperCase())}
-                    nomeDoBotao={`AUMENTAR CAM ${camara["numero_camara"]}`}
+                    onClick={() => aumentar(camara["numero"].toUpperCase())}
+                    nomeDoBotao={`AUMENTAR CAM ${camara["numero"]}`}
                 />
             ))}
         </div>
-    
+
     )
 }
 

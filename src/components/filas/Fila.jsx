@@ -13,20 +13,21 @@ import setaBaixoPng from "../../assets/img/seta-baixo.png"
 import observacaoPng from "../../assets/img/observacao.png"
 
 
-function Fila(props){
+function Fila(props) {
     const [abertoEditar, setAbertoEditar] = useState({})
     const [abertoObservacao, setAbertoObservacao] = useState({})
+
     const editarAtendido = (nomePessoa) => {
         if (abertoEditar[nomePessoa] === true) {
             setAbertoEditar(valoresAnteriores => ({
                 ...valoresAnteriores,
-                [nomePessoa]:false
+                [nomePessoa]: false
             }))
         } else {
             setAbertoEditar(valoresAnteriores => ({
                 ...valoresAnteriores,
-                [nomePessoa]:true
-            }))   
+                [nomePessoa]: true
+            }))
         }
     }
 
@@ -34,18 +35,18 @@ function Fila(props){
         if (abertoObservacao[nomePessoa] === true) {
             setAbertoObservacao(valoresAnteriores => ({
                 ...valoresAnteriores,
-                [nomePessoa]:false
+                [nomePessoa]: false
             }))
         } else {
             setAbertoObservacao(valoresAnteriores => ({
                 ...valoresAnteriores,
-                [nomePessoa]:true
-            }))   
+                [nomePessoa]: true
+            }))
         }
     }
 
-    const reposicionar = async (nomeFila, numeroAtendido, moverPara) => {
-        const resposta = await axios.get(`http://127.0.0.1:5001/reposicionar_atendido?nome_fila=${nomeFila}&numero_atendido=${numeroAtendido}&mover_para=${moverPara}`)
+    const reposicionar = async (numeroAtendido, moverPara) => {
+        const resposta = await axios.get(`http://127.0.0.1:5001/reposicionar_atendido?numero_atendido=${numeroAtendido}&mover_para=${moverPara}`)
         window.location.reload()
     }
 
@@ -53,70 +54,72 @@ function Fila(props){
         Object.values(props.fila["fila"]).map((pessoa, indice) => {
             setAbertoEditar(valoresAnteriores => ({
                 ...valoresAnteriores,
-                [pessoa["nome"]]:false
+                [pessoa["nome"]]: false
             }))
 
             setAbertoObservacao(valoresAnteriores => ({
                 ...valoresAnteriores,
-                [pessoa["nome"]]:false
+                [pessoa["nome"]]: false
             }))
         })
     }, [props.fila])
 
-    return(
+    console.log("fila", props.fila.fila)
+
+    return (
         <div className={`${styles.dvpLista} cor-${props.atividade}`}>
             <p className="txt-tit2">FILA {props.atividade.toUpperCase()}</p>
 
-            {Object.values(props.fila["fila"]).map((pessoa, indice) => (
-                
+            {Object.entries(props.fila.fila).map(([posicao, pessoa], indice) => (
+
                 <p key={indice}>
-                    {pessoa["estado"] === "riscado" && <s>{indice + 1}. {pessoa["nome"].toUpperCase()} - {pessoa["camara"]}</s>} 
-                    {pessoa["estado"] === "atendendo" && <b>{indice + 1}. {pessoa["nome"].toUpperCase()} - {pessoa["camara"]}</b>} 
-                    {pessoa["estado"] !== "atendendo" && pessoa["estado"] !== "riscado" && `${indice + 1}. ${pessoa["nome"].toUpperCase()}`}
+                    {pessoa["estado"] === "riscado" && <s>{posicao}. {pessoa["nome"].toUpperCase()} - {pessoa["camara"]}</s>}
+                    {pessoa["estado"] === "atendendo" && <b>{posicao}. {pessoa["nome"].toUpperCase()} - {pessoa["camara"]}</b>}
+                    {pessoa["estado"] !== "atendendo" && pessoa["estado"] !== "riscado" && `${posicao}. ${pessoa["nome"].toUpperCase()}`}
 
                     <BotaoIcone
                         alt="Editar"
                         src={editarPng}
                         onClick={() => editarAtendido(pessoa["nome"])}
                     />
-                   <BotaoIcone
+                    <BotaoIcone
                         alt="Remover"
                         src={lixoPng}
-                        href={`/remover_atendido?nome_fila=${props.fila["atividade"]}&numero_atendido=${pessoa["numero"]}`}
+                        href={`/remover_atendido?numero_atendido=${pessoa["numero"]}`}
                     />
-                   <BotaoIcone
+                    <BotaoIcone
                         alt="Reposicionar"
                         src={setaCimaPng}
-                        onClick={() => reposicionar(props.fila["atividade"], pessoa["numero"], "cima")}
+                        onClick={() => reposicionar(pessoa["numero"], "cima")}
                     />
-                   <BotaoIcone
+                    <BotaoIcone
                         alt="Reposicionar"
                         src={setaBaixoPng}
-                        onClick={() => reposicionar(props.fila["atividade"], pessoa["numero"], "baixo")}
+                        onClick={() => reposicionar(pessoa["numero"], "baixo")}
                     />
 
-                    <FilaDupla 
-                        dupla={pessoa["dupla"]}
+                    <FilaDupla
+                        dupla={pessoa["dupla_numero"]}
                         numeroAtendido={pessoa["numero"]}
                         fila={props.fila}
                         nomeFila={props.fila["atividade"]}
                     />
 
-                   <BotaoIcone
+                    <BotaoIcone
                         alt="Observação"
                         src={observacaoPng}
                         onClick={() => adicionarObservacao(pessoa["nome"])}
                     />
                     {
-                        pessoa["observacao"] && 
+                        pessoa["observacao"] &&
                         <p className={styles.textoObservacao}>
-                            <Icone alt="Observação" src={observacaoPng}/>
+                            <Icone alt="Observação" src={observacaoPng} />
                             {pessoa["observacao"]}
                         </p>
                     }
 
-                    {abertoEditar[pessoa["nome"]] && <FormAtendido 
-                        pessoaEstado={pessoa["estado"]} 
+                    {abertoEditar[pessoa["nome"]] && <FormAtendido
+                        pessoaEstado={pessoa["estado"]}
                         pessoaNome={pessoa["nome"]}
                         nomeFila={props.fila["atividade"]}
                         numeroAtendido={pessoa["numero"]}
@@ -130,7 +133,7 @@ function Fila(props){
                 </p>
             ))}
         </div>
-)
+    )
 }
 
 export default Fila

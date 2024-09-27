@@ -4,10 +4,10 @@ import audioSilencioMp3 from "../../assets/audio/celulares_silencio.mp3"
 import Botao from "../botoes/Botao"
 
 
-function SubMenuGeral (props) {
+function SubMenuGeral(props) {
 
     const reinicarTudo = async () => {
-        const resposta = await axios.get("http://127.0.0.1:5001/reiniciar_tudo_confirmado")
+        const resposta = await axios.get("http://127.0.0.1:5001/reiniciar_tudo")
         window.location.reload()
     }
 
@@ -42,7 +42,7 @@ function SubMenuGeral (props) {
                 nomeDoBotao="REINICAR TUDO"
             />
         </div>
-    
+
     )
 }
 
