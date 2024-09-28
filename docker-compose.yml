@@ -1,0 +1,40 @@
+services:
+  api_recepcao:
+    # image: api_recepcao:1.0
+    build: ../api_recepcao
+    ports:
+      - "5001:5001"
+    environment:
+      - DATABASE_URL=mysql://recepcao:senha123@db_recepcao/recepcao
+    depends_on:
+      db_recepcao: 
+        condition: service_healthy
+        # restart: true
+  api_calendario:
+    # image: api_calendario:1.0
+    build: ../api_calendario
+
+    ports:
+      - "5000:5000"
+  front_recepcao:
+    # image: front_recepcao:1.0
+    build: ../front_recepcao
+    ports:
+      - "5173:80"
+  db_recepcao:
+    image: mysql
+    environment:
+      - MYSQL_USER=recepcao
+      - MYSQL_PASSWORD=senha123
+      - MYSQL_DATABASE=recepcao
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+    volumes:
+      - db_recepcao_volume:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+      interval: 5s
+
+volumes:
+  db_recepcao_volume:

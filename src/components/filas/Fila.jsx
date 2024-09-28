@@ -73,8 +73,8 @@ function Fila(props) {
             {Object.entries(props.fila.fila).map(([posicao, pessoa], indice) => (
 
                 <p key={indice}>
-                    {pessoa["estado"] === "riscado" && <s>{posicao}. {pessoa["nome"].toUpperCase()} - {pessoa["camara"]}</s>}
-                    {pessoa["estado"] === "atendendo" && <b>{posicao}. {pessoa["nome"].toUpperCase()} - {pessoa["camara"]}</b>}
+                    {pessoa["estado"] === "riscado" && <s>{posicao}. {pessoa["nome"].toUpperCase()} - {pessoa["numero_camara"]}</s>}
+                    {pessoa["estado"] === "atendendo" && <b>{posicao}. {pessoa["nome"].toUpperCase()} - {pessoa["numero_camara"]}</b>}
                     {pessoa["estado"] !== "atendendo" && pessoa["estado"] !== "riscado" && `${posicao}. ${pessoa["nome"].toUpperCase()}`}
 
                     <BotaoIcone
