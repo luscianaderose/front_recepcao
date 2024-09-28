@@ -1,39 +1,50 @@
+import axios from "axios"
+import { useState, useEffect } from "react"
+
 import styles from "./Tv.module.css"
 import CamaraBola from "../camaras/CamaraBola"
 
 
-function Tv (props) {
-    var nomeDupla = ""
-    var nomeAtendido = ""
-    var numeroAtendido = ""
+function Tv(props) {
+    const [pessoaDupla, setPessoaDupla] = useState(null)
+    const [numeroAtendido, setNumeroAtendido] = useState()
     var filasNomesPessoas = []
 
-    if (props.pessoaAtendida !== null){
-        nomeAtendido = props.pessoaAtendida["nome"]
-        if (props.pessoaAtendida["dupla"] !== -1 && props.fila !== undefined){
-            const numeroDupla = props.pessoaAtendida["dupla"]
-            nomeDupla = props.fila["fila"][numeroDupla]["nome"]
+    useEffect(() => {
+        const buscarPessoaDupla = async (numero_pessoa) => {
+            const respostaPessoaDupla = await axios.get(`http://127.0.0.1:5001/pessoas/${numero_pessoa}`)
+            setPessoaDupla(respostaPessoaDupla.data)
         }
-    }
 
-    if (props.fila !== undefined && nomeAtendido !== ""){
-        Object.values(props.fila["fila"]).map((pessoa, indice) => (
-            filasNomesPessoas.push(pessoa["nome"])
-        ))
-        numeroAtendido = filasNomesPessoas.indexOf(nomeAtendido)
-    }
+        if (props.pessoaAtendida !== null) {
+            if (props.pessoaAtendida["dupla_numero"] !== null && props.fila !== undefined) {
+                buscarPessoaDupla(props.pessoaAtendida["dupla_numero"])
+            }
+
+            if (props.fila !== undefined) {
+                Object.values(props.fila["fila"]).map((pessoa, indice) => (
+                    filasNomesPessoas.push(pessoa["nome"])
+                ))
+                setNumeroAtendido(filasNomesPessoas.indexOf(props.pessoaAtendida["nome"]))
+            }
+        }
+
+
+    }, [props.pessoaAtendida]);
 
     const classeDaCamara = {
-        "fechada":"camara-fechada",
-        "atendendo":"camara-chamando",
-        "último":"camara-avisar",
-        "foi avisado":"camara-avisado"
+        "fechada": "camara-fechada",
+        "atendendo": "camara-chamando",
+        "último": "camara-avisar",
+        "foi avisado": "camara-avisado"
     }
+
+    console.log("******", pessoaDupla)
 
     return (
         <div className={`${styles.tvCamara} cor-fundo2 ${classeDaCamara[props.estado.toLowerCase()]}`}>
             <div className={styles.tvBolaAtividade}>
-                <CamaraBola 
+                <CamaraBola
                     className={`cor-${props.atividade} ${styles.camaraBolaTv}`}
                     numeroCamara={props.numero}
                 />
@@ -47,11 +58,14 @@ function Tv (props) {
                 </div>
             </div>
             <div className={styles.tvNomeAtendido}>
-                <p className="txt-tv2">
-                    {nomeAtendido !== "" && `${numeroAtendido + 1}. ${nomeAtendido}`.toUpperCase()}
-                    {nomeDupla !== "" && ` & ${nomeDupla}`.toUpperCase()}
-                    {numeroAtendido === "" && "CÂMARA VAZIA"}
-                </p>
+                {
+                    props.pessoaAtendida &&
+                    <p className="txt-tv2">
+                        {`${numeroAtendido + 1}. ${props.pessoaAtendida.nome}`.toUpperCase()}
+                        {pessoaDupla && ` & ${pessoaDupla.nome}`.toUpperCase()}
+                        {numeroAtendido === "" && "CÂMARA VAZIA"}
+                    </p>
+                }
             </div>
         </div>
     )
