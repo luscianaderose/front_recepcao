@@ -13,7 +13,6 @@ services:
   api_calendario:
     # image: api_calendario:1.0
     build: ../api_calendario
-
     ports:
       - "5000:5000"
   front_recepcao:

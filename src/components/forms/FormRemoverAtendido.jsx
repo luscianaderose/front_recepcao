@@ -8,9 +8,7 @@ function FormRemoverAtendido() {
     const numeroAtendido = parametros.get("numero_atendido")
     const removerAtendido = async () => {
         const resposta = await axios.get(`http://127.0.0.1:5001/remover_atendido?numero_atendido=${numeroAtendido}`)
-        window.history.back(2)
-        window.location.reload()
-        window.location.reload()
+        window.location.href = "/";
     }
 
     return (

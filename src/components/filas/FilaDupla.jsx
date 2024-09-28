@@ -16,17 +16,19 @@ function FilaDupla(props) {
     const criarDupla = async () => {
         const pessoa1 = props.fila["fila"][numeroDupla]
         const pessoa2 = props.fila["fila"][props.numeroAtendido]
+        await axios.get(`http://127.0.0.1:5001/criar_dupla?nome_fila_dupla=${props.nomeFila}&numero_atendido=${props.numeroAtendido}&numero_dupla=${numeroDupla}`)
+        window.location.href = "/"
 
-        if (!(numeroDupla === props.numeroAtendido + 1 || numeroDupla === props.numeroAtendido - 1)) {
-            alert("Não é possível criar dupla!")
-        } else if (pessoa1["dupla"] !== -1 || pessoa2["dupla"] !== -1) {
-            alert("Não é possível criar dupla com uma pessoa de outra dupla!")
-        } else if (pessoa1["estado"] !== "aguardando" || pessoa2["estado"] !== "aguardando") {
-            alert("Não é possível criar dupla depois que a pessoa já foi chamada!")
-        } else {
-            await axios.get(`http://127.0.0.1:5001/criar_dupla?nome_fila_dupla=${props.nomeFila}&numero_atendido=${props.numeroAtendido}&numero_dupla=${numeroDupla}`)
-            window.history.back(1)
-        }
+        // if (!(numeroDupla === props.numeroAtendido + 1 || numeroDupla === props.numeroAtendido - 1)) {
+        //     alert("Não é possível criar dupla!")
+        // } else if (pessoa1["dupla"] !== -1 || pessoa2["dupla"] !== -1) {
+        //     alert("Não é possível criar dupla com uma pessoa de outra dupla!")
+        // } else if (pessoa1["estado"] !== "aguardando" || pessoa2["estado"] !== "aguardando") {
+        //     alert("Não é possível criar dupla depois que a pessoa já foi chamada!")
+        // } else {
+        //     await axios.get(`http://127.0.0.1:5001/criar_dupla?nome_fila_dupla=${props.nomeFila}&numero_atendido=${props.numeroAtendido}&numero_dupla=${numeroDupla}`)
+        //     window.history.back(1)
+        // }
     }
 
     const cancelarDupla = async () => {

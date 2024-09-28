@@ -26,12 +26,15 @@ RUN echo 'server { \
     root /usr/share/nginx/html; \
     index index.html; \
     location / { \
-        try_files $uri /index.html; \
+    try_files $uri /index.html; \
     } \
-}' > /etc/nginx/conf.d/default.conf
+    }' > /etc/nginx/conf.d/default.conf
 
 # Copiar os arquivos estáticos da build do React para o diretório padrão do Nginx
 COPY --from=build /app/dist /usr/share/nginx/html
+
+# Ajustar permissões dos arquivos copiados
+RUN chmod -R 755 /usr/share/nginx/html
 
 # Expor a porta 80 para acessar o servidor
 EXPOSE 80
