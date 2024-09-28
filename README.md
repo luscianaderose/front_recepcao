@@ -21,18 +21,22 @@ Digite os seguintes comandos no terminal:
 
 ```
 git clone https://github.com/luscianaderose/front_recepcao
+```
+```
 docker build -t nome_da_imagem .
+```
+```
 docker run -d -p 80:80 nome_da_imagem
 ```
 
 Para acessar no navegador:
 http://localhost:80/
 
-### LINKS DO PROJETO
+## LINKS DO PROJETO
 
 Os demais repositórios associados a este projetos podem ser consultados em:
 
 - [api_recepcao](https://github.com/luscianaderose/api_recepcao)
 - [api_calendario](https://github.com/luscianaderose/api_calendario)
-- [deploy_recepcao](https://github.com/luscianaderose/deploy_recepcao)
+- [front_recepcao](https://github.com/luscianaderose/front_recepcao)
 - [figma](https://www.figma.com/proto/4WaxuFjrOhR8aIHIlHXuIP/prj-recepcao-cefp-01?node-id=0-1&t=XGYyK7bsqyAa5qK2-1)
